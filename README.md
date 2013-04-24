@@ -22,6 +22,15 @@ Basically a friendly helper.
 
 Depends on wget.
 
+# Install
+
+Not on Ruby gems yet so:
+
+```
+gem build moss.gemspec
+sudo gem install moss-X.Y.Z.gem
+```
+
 # Files
 
 Stores the urls in ~/.mosses
