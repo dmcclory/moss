@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+
+require 'main'
+require 'moss'
+
+Main {
+  mode 'list' do
+    name 'list'
+    synopsis "moss list"
+    description "list all name/url pairs"
+    def run
+      puts "key\t\turl"
+      Moss.pairs.each do |key, value|
+        puts "#{key}\t\t#{value}"
+      end
+    end
+  end
+
+  mode 'store' do
+    name 'store'
+    synopsis "moss store name url"
+    description "save a name => url pair"
+
+    argument('name') {
+      synopsis "string"
+    }
+
+    argument('url') {
+    }
+    def run
+      puts "should do some storing"
+      puts params['name'].value
+      puts params['url'].value
+      Moss.save(params['name'].value, params['url'].value)
+    end
+  end
+
+  mode 'get' do
+    name 'get'
+    argument('name')
+    argument('path=[.]', '.') {
+      default "."
+      
+    }
+    synopsis "moss get name path"
+    description "will download the file associated with name"
+    def run
+      puts "will do some downloading"
+      puts "gonna get thing in #{params['name'].value}"
+      puts "gonna store it in #{params['path'].value}"
+      Moss.get(params['name'].value, params['path'].value) 
+    end
+  end
+
+  mode 'clear' do
+    name 'clear'
+    argument('name')
+    synopsis "moss clear name"
+    description "remove a file from the list of pairs"
+    def run
+      puts "will erase a key"
+      Moss.clear(params['name'].value)
+    end
+  end
+
+  def run
+    puts usage.to_s
+  end
+}
