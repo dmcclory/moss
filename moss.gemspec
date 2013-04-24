@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
   s.email = 'danmcclory@gmail.com'
   s.homepage = 'http://petespommesfrites.com'
   s.platform = Gem::Platform::RUBY
-  s.description = 'Moss remembers and downloads hard-to-recall resources for you'
+  s.description = 'Like bookmarks for your shell'
   s.summary = s.description
   s.files = %w(
 bin/moss
