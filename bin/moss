@@ -64,6 +64,22 @@ Main {
     end
   end
 
+  mode 'clip' do
+    name 'clip'
+    argument('name')
+    synopsis "moss clip name"
+    description "copy the value at name to the clipboard"
+    def run
+      value = Moss.pairs[params['name'].value]
+      if value
+        puts "copy #{value} to the clipboard"
+        IO.popen("xclip -selection clipboard", 'w') { |f| f.write value }
+      else
+        puts "nothing stored for #{params['name'].value}"
+      end
+    end
+  end
+
   def run
     puts usage.to_s
   end
