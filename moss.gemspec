@@ -13,7 +13,7 @@ spec = Gem::Specification.new do |s|
 bin/moss
 lib/moss.rb
 lib/moss/version.rb
-README
+README.md
   )
   s.require_paths << 'lib'
   s.bindir = 'bin'
